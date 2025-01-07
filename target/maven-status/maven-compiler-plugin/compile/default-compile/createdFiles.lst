@@ -1,3 +1,4 @@
-me\event\minecraft_Event\menu\EventMenu.class
 me\event\minecraft_Event\Main.class
+me\event\minecraft_Event\utils\Utils.class
 me\event\minecraft_Event\commands\EventCMD.class
+me\event\minecraft_Event\menu\EventStartMenu.class

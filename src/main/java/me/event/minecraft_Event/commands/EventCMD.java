@@ -5,7 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import me.event.minecraft_Event.menu.EventMenu;
+import me.event.minecraft_Event.menu.EventStartMenu;
 
 public class EventCMD implements CommandExecutor {
 
@@ -19,7 +19,7 @@ public class EventCMD implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player) {
-            EventMenu.MenuOfEvent(player);
+            EventStartMenu.MenuOfEvent(player);
             return true;
         } else {
             commandSender.sendMessage("Данная команда может быть отправлена только игроком.");
