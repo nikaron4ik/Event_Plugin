@@ -69,18 +69,6 @@ public class EventStartMenu {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         player.openInventory(menu);
     }
 

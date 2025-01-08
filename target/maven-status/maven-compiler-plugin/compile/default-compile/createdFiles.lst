@@ -1,4 +1,7 @@
+me\event\minecraft_Event\listeners\EventMainMenuListener.class
+me\event\minecraft_Event\menu\EventMainMenu.class
+me\event\minecraft_Event\menu\EventStartMenu.class
 me\event\minecraft_Event\Main.class
 me\event\minecraft_Event\utils\Utils.class
+me\event\minecraft_Event\listeners\EventMainMenuListener$1.class
 me\event\minecraft_Event\commands\EventCMD.class
-me\event\minecraft_Event\menu\EventStartMenu.class

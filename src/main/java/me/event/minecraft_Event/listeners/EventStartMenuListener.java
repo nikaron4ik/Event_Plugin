@@ -1,24 +1,26 @@
 package me.event.minecraft_Event.listeners;
 
+import me.event.minecraft_Event.menu.EventMainMenu;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.raid.RaidStopEvent;
 import org.bukkit.inventory.ItemStack;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static me.event.minecraft_Event.utils.Utils.color;
 
 public class EventStartMenuListener implements Listener {
-
     // Хэш-таблица со значением Игрок-Слот для сохранения результата выбранной лошади
-    private Map<Player, Integer> selectedHorses = new HashMap<>();
+    private Map<Player, Integer> selectedHorse = new HashMap<>();
+
+    // Геттер для запоминания выбора игрока (понадобится в EventMainMenuListener для определения, выиграл игрок или нет)
+    public Map<Player, Integer> getSelectedHorse() {
+        return selectedHorse;
+    }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -36,7 +38,7 @@ public class EventStartMenuListener implements Listener {
 
             // Действия в случае, если выбрана была одна из лошадей
             if (horses.contains(slot)) {
-                Integer previousSlot = selectedHorses.put(player, slot);
+                Integer previousSlot = selectedHorse.put(player, slot);
 
                 if (previousSlot != null) {
                     ItemStack previousItem = event.getInventory().getItem(previousSlot);
@@ -49,12 +51,11 @@ public class EventStartMenuListener implements Listener {
 
                 player.updateInventory();
             } else if (slot == next_button) {
-              // Пока что пусто, функционал будет позже
+                player.closeInventory();
+                EventMainMenu.openInventory(player);
             } else if (slot == exit_button) {
                 player.closeInventory();
             }
-
         }
     }
 }
-

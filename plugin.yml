@@ -1,0 +1,12 @@
+name: Minecraft_Event
+version: '1.0'
+main: me.event.minecraft_Event.Main
+api-version: '1.21'
+authors: [ nikaron4ik, shardov ]
+
+commands:
+  event_start:
+    description: Команда для начала ивента
+    usage: /<command>
+    aliases:
+      - event
