@@ -1,6 +1,7 @@
 package me.event.minecraft_Event.listeners;
 
 import me.event.minecraft_Event.menu.EventMainMenu;
+import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,10 +16,10 @@ import static me.event.minecraft_Event.utils.Utils.color;
 
 public class EventStartMenuListener implements Listener {
     // Хэш-таблица со значением Игрок-Слот для сохранения результата выбранной лошади
-    private Map<Player, Integer> selectedHorse = new HashMap<>();
+    private static Map<Player, Integer> selectedHorse = new HashMap<>();
 
     // Геттер для запоминания выбора игрока (понадобится в EventMainMenuListener для определения, выиграл игрок или нет)
-    public Map<Player, Integer> getSelectedHorse() {
+    public static Map<Player, Integer> getSelectedHorse() {
         return selectedHorse;
     }
 

@@ -49,6 +49,8 @@ public class EventMainMenuListener implements Listener {
         startAndMainSlots.put(21, 18);
         startAndMainSlots.put(30, 27);
 
+        Integer chosenHorse = EventStartMenuListener.getSelectedHorse().get(player);
+
 
         new BukkitRunnable() {
             @Override
@@ -56,9 +58,11 @@ public class EventMainMenuListener implements Listener {
                 boolean isRaceFinished = false;
 
                 for (int i = 0; i < positionOfHorses.length; i++) {
+
                     if (positionOfHorses[i] % 9 == slotEnd) {
                         continue;
                     }
+
                     inventory.setItem(positionOfHorses[i], new ItemStack(Material.AIR));
 
                     if (i == winHorse) {
@@ -86,6 +90,7 @@ public class EventMainMenuListener implements Listener {
 
                         this.cancel();
                     }
+
                     inventory.setItem(positionOfHorses[i], horses[i]);
                 }
                 player.updateInventory();
@@ -94,6 +99,12 @@ public class EventMainMenuListener implements Listener {
                     this.cancel();
                     Bukkit.getScheduler().runTaskLater(JavaPlugin.getProvidingPlugin(this.getClass()), () -> {
                         player.closeInventory();
+
+                        if (startAndMainSlots.get(chosenHorse) == winHorse) {
+                            player.sendMessage(color("&a&lПоздравляем, Ваша лошадь выиграла!"));
+                        } else {
+                            player.sendMessage(color("&c&lК сожалению, Ваша лошадь проиграла :("));
+                        }
                     }
                      , 60);
                 }
